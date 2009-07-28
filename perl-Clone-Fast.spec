@@ -1,21 +1,18 @@
+%define upstream_name    Clone-Fast
+%define upstream_version 0.93
 
-%define realname   Clone-Fast
-%define version    0.93
-%define release    %mkrel 1
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
-Name:       perl-%{realname}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
 Summary:    Natively copying Perl data structures
-Source:     http://www.cpan.org/modules/by-module/Clone/%{realname}-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/%{realname}
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Clone/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires: perl-devel
-
-
-
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Essentially, this module is a very optimized version of the Clone::More
@@ -36,7 +33,7 @@ the reason why I loaded this module along side of the Clone::More manpage.
 	Clone::Fast 18442/s        144%         49%          --
 
 %prep
-%setup -q -n %{realname}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -57,5 +54,3 @@ rm -rf %buildroot
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
-
