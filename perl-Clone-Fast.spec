@@ -57,3 +57,33 @@ rm -rf %buildroot
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
+
+
+%changelog
+* Wed Jan 25 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.930.0-5
++ Revision: 768358
+- svn commit -m mass rebuild of perl extension against perl 5.14.2
+
+* Sat May 28 2011 Funda Wang <fwang@mandriva.org> 0.930.0-4
++ Revision: 680833
+- mass rebuild
+
+* Wed Jul 21 2010 Jérôme Quelin <jquelin@mandriva.org> 0.930.0-3mdv2011.0
++ Revision: 556552
+- removing faulty test failing with perl >= 5.11
+- rebuild
+- rebuild
+
+* Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 0.930.0-1mdv2010.0
++ Revision: 401702
+- rebuild using %%perl_convert_version
+- fixed license field
+
+* Fri Feb 20 2009 Jérôme Quelin <jquelin@mandriva.org> 0.93-1mdv2009.1
++ Revision: 343338
+- import perl-Clone-Fast
+
+
+* Fri Feb 20 2009 cpan2dist 0.93-1mdv
+- initial mdv release, generated with cpan2dist
+
