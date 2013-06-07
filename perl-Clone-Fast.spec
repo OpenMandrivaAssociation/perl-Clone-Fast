@@ -1,9 +1,11 @@
 %define upstream_name    Clone-Fast
 %define upstream_version 0.93
 
+%define debug_package %{nil}
+
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	5
+Release:	6
 
 Summary:    Natively copying Perl data structures
 License:    GPL+ or Artistic
@@ -12,7 +14,6 @@ Url:        http://search.cpan.org/dist/%{upstream_name}
 Source0:    http://www.cpan.org/modules/by-module/Clone/%{upstream_name}-%{upstream_version}.tar.gz
 
 BuildRequires: perl-devel
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Essentially, this module is a very optimized version of the Clone::More
@@ -46,14 +47,9 @@ rm t/03scalar.t
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
