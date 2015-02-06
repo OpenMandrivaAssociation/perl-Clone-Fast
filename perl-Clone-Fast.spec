@@ -5,7 +5,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	7
+Release:	8
 
 Summary:    Natively copying Perl data structures
 License:    GPL+ or Artistic
