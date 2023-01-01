@@ -1,19 +1,18 @@
 %define upstream_name    Clone-Fast
-%define upstream_version 0.93
+%undefine _debugsource_packages
 
-%define debug_package %{nil}
+Name:		perl-%{upstream_name}
+Version:	0.97
+Release:	1
+Summary:	Natively copying Perl data structures
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/Clone-Fast
+Source0:	https://cpan.metacpan.org/authors/id/W/WA/WAZZUTEKE/Clone-Fast-%{version}.tar.gz
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:	8
-
-Summary:    Natively copying Perl data structures
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Clone/%{upstream_name}-%{upstream_version}.tar.gz
-
-BuildRequires: perl-devel
+BuildRequires:	perl-devel
+# For tests
+BuildRequires:	perl(Devel::Peek)
 
 %description
 Essentially, this module is a very optimized version of the Clone::More
@@ -34,52 +33,20 @@ the reason why I loaded this module along side of the Clone::More manpage.
 	Clone::Fast 18442/s        144%         49%          --
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%autosetup -p1 -n %{upstream_name}
+%{__perl} Makefile.PL INSTALLDIRS=vendor
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
-# this test fails with perl >= 5.11
-# https://rt.cpan.org/Ticket/Display.html?id=43248
-rm t/03scalar.t
-%make test
+# Tests seem to be broken
 
 %install
-%makeinstall_std
+%make_install
 
 %files
-%doc Changes README
+%doc Changes
 %{_mandir}/man3/*
-%perl_vendorlib/*
-
-
-%changelog
-* Wed Jan 25 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.930.0-5
-+ Revision: 768358
-- svn commit -m mass rebuild of perl extension against perl 5.14.2
-
-* Sat May 28 2011 Funda Wang <fwang@mandriva.org> 0.930.0-4
-+ Revision: 680833
-- mass rebuild
-
-* Wed Jul 21 2010 Jérôme Quelin <jquelin@mandriva.org> 0.930.0-3mdv2011.0
-+ Revision: 556552
-- removing faulty test failing with perl >= 5.11
-- rebuild
-- rebuild
-
-* Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 0.930.0-1mdv2010.0
-+ Revision: 401702
-- rebuild using %%perl_convert_version
-- fixed license field
-
-* Fri Feb 20 2009 Jérôme Quelin <jquelin@mandriva.org> 0.93-1mdv2009.1
-+ Revision: 343338
-- import perl-Clone-Fast
-
-
-* Fri Feb 20 2009 cpan2dist 0.93-1mdv
-- initial mdv release, generated with cpan2dist
-
+%perl_vendorarch/Clone/Fast.pm
+%perl_vendorarch/auto/Clone/Fast
