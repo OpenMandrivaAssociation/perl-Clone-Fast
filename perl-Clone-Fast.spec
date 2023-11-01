@@ -3,11 +3,11 @@
 
 Name:		perl-%{upstream_name}
 Version:	0.97
-Release:	1
+Release:	2
 Summary:	Natively copying Perl data structures
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/Clone-Fast
+Url:		https://search.cpan.org/dist/Clone-Fast
 Source0:	https://cpan.metacpan.org/authors/id/W/WA/WAZZUTEKE/Clone-Fast-%{version}.tar.gz
 
 BuildRequires:	perl-devel
