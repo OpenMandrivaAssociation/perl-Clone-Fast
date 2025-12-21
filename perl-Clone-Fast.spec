@@ -10,6 +10,7 @@ Group:		Development/Perl
 Url:		https://search.cpan.org/dist/Clone-Fast
 Source0:	https://cpan.metacpan.org/authors/id/W/WA/WAZZUTEKE/Clone-Fast-%{version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 # For tests
 BuildRequires:	perl(Devel::Peek)
